@@ -20,6 +20,12 @@
                     }
                 ?>
             </select>
+            <input name="ac">
+            <br>
+            <br>
+            <input name="pwd">
+            <br>
+            <br>
             <button>管理網站</button>
         </form>
         <br>
