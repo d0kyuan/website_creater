@@ -1,0 +1,32 @@
+<form class="set_config" action="set_config.php" method="post" enctype="multipart/form-data">
+    <h2>基本設定</h2>
+    <hr>
+    <br>
+    <label>網站名稱:<input name="web_name"></label>
+    <hr>
+    <br>
+    <label>icon:<input type="file" name="web_icon"></label>
+    <hr>
+    <br>
+
+    <label>管理者帳號:<input name="web_account"></label>
+    <hr>
+    <br>
+    <label>管理者密碼:<input name="web_password"></label>
+    <hr>
+    <br>
+    <button id="setting_others" type="button">進階設定</button>
+    <div id="setting">
+        
+    </div>
+    <button>送出</button>
+    <button type="reset">清除</button>
+</form>
+<script>
+    $('#setting_others').click(function(){
+       $.getJSON('get_setting.php',function(data){
+           console.log(data);
+       }); 
+    });
+
+</script>
