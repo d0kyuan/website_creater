@@ -207,6 +207,50 @@
                                             obj = inst.get_node(data.reference);
 
                                         var parentname = obj.id;
+                                        var a = prompt("檔案名稱", "");
+
+
+
+
+
+                                        $.post("add_node.php", {
+                                            name: a,
+                                            parent: parentname,
+                                            Page_Own: own,
+                                            path: obj.a_attr.href + "/" + a
+                                        }).done(function (data) {
+                                            console.log("----------------");
+
+                                            console.log("----------------");
+
+                                            inst.create_node(obj, {
+                                                type: "file",
+                                                "icon": "jstree-file",
+                                                text: a,
+                                                a_attr: {
+                                                    href: obj.a_attr.href + "/" + a
+                                                }
+
+                                            }, "last", function (new_node) {
+
+                                                setTimeout(function () {
+                                                    inst.open_node(obj);
+
+                                                }, 0);
+                                            });
+                                        });
+
+
+
+                                    }
+                                },
+                                "create_file1": {
+                                    "label": "上傳檔案",
+                                    "action": function (data) {
+                                        var inst = $.jstree.reference(data.reference),
+                                            obj = inst.get_node(data.reference);
+
+                                        var parentname = obj.id;
                                         //                                        var a = prompt("檔案名稱", "");
 
 
@@ -446,8 +490,8 @@
 
                 }).on('hover_node.jstree', function (e, data) {
                     //console.log('move');
-                    
-target = data.node.text;
+
+                    target = data.node.text;
                 });
             var target = "";
 
@@ -468,7 +512,7 @@ target = data.node.text;
                     evt.preventDefault()
                     var files = evt.dataTransfer.files // FileList object.
                     var file = files[0] // File     object.
-                    alert("目標節點"+target+"檔案名稱"+file.name)
+                    alert("目標節點" + target + "檔案名稱" + file.name)
                 },
                 false
             )
